@@ -24,7 +24,7 @@ public class ResultMessage {
                 .filter(entry -> entry.getKey() == result)
                 .findFirst()
                 .map(Map.Entry::getValue)
-                .orElse("Nieprawidłowy wynik");
+                .orElse("Ups, we have a glitch, please try again...");
 
     }
 }
