@@ -42,7 +42,15 @@ class ResultValidatorTest {
     @Test
     public void test_validate_numbers_player_hit_six_numbers() {
         //given
+        Set <Integer> playerNumbers = new HashSet<>(Arrays.asList(11, 13, 25, 36, 49, 71));
+        Set<Integer> winingNumbers = new HashSet<>(Arrays.asList(11, 13, 25, 36, 49, 71));
+
+        Validator validator = new ResultValidator();
+
         //when
+        int hits = validator.validateNumbers(playerNumbers, winingNumbers);
+
         //then
+        assertEquals(6, hits);
     }
 }
