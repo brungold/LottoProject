@@ -1,4 +1,4 @@
-package pl.lotto.inputSeting;
+package pl.lotto.inputSetting;
 
 public interface VerifyNumbers {
     public boolean isNumber (String str);

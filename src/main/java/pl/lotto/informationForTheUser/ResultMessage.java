@@ -1,30 +1,59 @@
 package pl.lotto.informationForTheUser;
 
-import java.util.HashMap;
-import java.util.Map;
+import pl.lotto.inputSetting.UserNumbersSet;
+
+
+import java.util.Set;
 
 public class ResultMessage {
     private final int result;
+    private final Set<Integer> userNumbersSet;
+    private final Set<Integer> winningNumbers;
 
-    public ResultMessage(int result) {
+    public ResultMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumbers) {
         this.result = result;
+        this.userNumbersSet = userNumbersSet;
+        this.winningNumbers = winningNumbers;
     }
 
-    public String getMessage() {
-        Map<Integer, String> messages = new HashMap<>();
-        messages.put(6, "Splendidly! Congratulations you won the grand prize!");
-        messages.put(5, "You hit 5! Great result!");
-        messages.put(4, "You hit 4, nice score!");
-        messages.put(3, "You hit half, almost");
-        messages.put(2, "You hit 2 digits, unfortunately not this time...");
-        messages.put(1, "You hit 1 digits, unfortunately not this time...");
-        messages.put(0, "Unfortunately not this time...");
+    private int getResult() {
+        return result;
+    }
 
-        return messages.entrySet().stream()
-                .filter(entry -> entry.getKey() == result)
-                .findFirst()
-                .map(Map.Entry::getValue)
-                .orElse("Ups, we have a glitch, please try again...");
+    private Set<Integer> getUserNumbersSet() {
+        return userNumbersSet;
+    }
 
+    private Set<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public String getMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumber) {
+        switch (result) {
+            case 6:
+                return "Congratulations you hit " + result + " digits! Splendidly! You won the grand prize! \n" +
+                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+
+            case 5:
+            case 4:
+                return "You hit " + result + " digits! Congratulations!\n" +
+                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+
+            default:
+                return "You hit " + result + " , unfortunately not this time...\n" +
+                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+        }
+    }
+
+    private static String setToString(Set<Integer> set) {
+        StringBuilder sb = new StringBuilder("[");
+        for (Integer number : set) {
+            sb.append(number).append(", ");
+        }
+        if (!set.isEmpty()) {
+            sb.setLength(sb.length() - 2);
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }

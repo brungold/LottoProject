@@ -1,4 +1,4 @@
-package pl.lotto.inputSeting;
+package pl.lotto.inputSetting;
 
 import java.io.InputStream;
 import java.util.Scanner;

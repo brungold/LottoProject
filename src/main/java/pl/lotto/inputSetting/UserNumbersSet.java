@@ -1,4 +1,4 @@
-package pl.lotto.inputSeting;
+package pl.lotto.inputSetting;
 
 import java.util.Collections;
 import java.util.HashSet;
