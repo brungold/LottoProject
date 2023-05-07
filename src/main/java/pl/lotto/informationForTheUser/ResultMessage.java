@@ -1,9 +1,12 @@
 package pl.lotto.informationForTheUser;
 
 import pl.lotto.inputSetting.UserNumbersSet;
+import pl.lotto.informationForTheUser.Messeges;
 
 
 import java.util.Set;
+
+import static pl.lotto.informationForTheUser.Messeges.*;
 
 public class ResultMessage {
     private final int result;
@@ -31,17 +34,14 @@ public class ResultMessage {
     public String getMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumber) {
         switch (result) {
             case 6:
-                return "Congratulations you hit " + result + " digits! Splendidly! You won the grand prize! \n" +
-                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+                return String.format(WINNING_MESSAGE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
 
             case 5:
             case 4:
-                return "You hit " + result + " digits! Congratulations!\n" +
-                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+                return String.format(HIT_FOUR_OR_FIVE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
 
             default:
-                return "You hit " + result + " , unfortunately not this time...\n" +
-                        "Winning numbers were " + setToString(getWinningNumbers()) + " and yours were " + setToString(getUserNumbersSet());
+                return String.format(LESS_HITS_THAN_FOUR, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
         }
     }
 
