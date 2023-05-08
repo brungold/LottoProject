@@ -32,16 +32,16 @@ public class ResultMessage {
     }
 
     public String getMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumber) {
-        switch (result) {
+        switch (getResult()) {
             case 6:
-                return String.format(WINNING_MESSAGE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(WINNING_MESSAGE, getResult(), setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
 
             case 5:
             case 4:
-                return String.format(HIT_FOUR_OR_FIVE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(HIT_FOUR_OR_FIVE, getResult(), setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
 
             default:
-                return String.format(LESS_HITS_THAN_FOUR, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(LESS_HITS_THAN_FOUR, getResult(), setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
         }
     }
 
