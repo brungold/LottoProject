@@ -1,7 +1,10 @@
 package pl.lotto;
 
+import pl.lotto.engine.ApplicationEngine;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello Lotto");
+        ApplicationEngine engine = new ApplicationEngine();
+        engine.start();
     }
 }
