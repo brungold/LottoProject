@@ -14,10 +14,10 @@ public class ApplicationEngine {
     public void start() {
         displayWelcomeMessage();
         displayGameRules();
-        getUserNumbersSet();
-        getWiningNumbers();
-        getResult();
-        getResultMessage(getResult(), getUserNumbersSet(), getWiningNumbers());
+        Set<Integer> userNumbersSet = getUserNumbersSet();
+        Set<Integer> winningNumbers = getWiningNumbers();
+        int result = getResult();
+        getResultMessage(result, userNumbersSet, winningNumbers);
     }
 
     private void displayWelcomeMessage() {
