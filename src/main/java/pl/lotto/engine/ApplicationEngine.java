@@ -34,7 +34,7 @@ public class ApplicationEngine {
         NumberRange numberRange = new RangeVerifier();
         VerifyNumbers verifyNumbers = new NumberVerifier();
         UserNumbersSet userNumbersSet = new UserNumbersSet(inputData, numberRange, verifyNumbers);
-        return userNumbersSet.getUserNumbers();
+        return userNumbersSet.collectNumbers();
     }
 
     private Set<Integer> getWiningNumbers() {
