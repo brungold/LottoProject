@@ -7,8 +7,7 @@ import java.util.Set;
 import pl.lotto.dataSetting.NumbersSetting;
 import pl.lotto.informationForTheUser.Messeges;
 
-public class UserNumbersSet implements UserNumbers {
-    private final Set<Integer> userNumbers = new HashSet<>();
+public class UserNumbersSet {
     private final InputDataFromUser inputDataFromUser;
     private final NumberRange numberRange;
     private final VerifyNumbers verifyNumbers;
@@ -20,9 +19,6 @@ public class UserNumbersSet implements UserNumbers {
         this.verifyNumbers = verifyNumbers;
     }
 
-    public Set<Integer> getUserNumbers() {
-        return Collections.unmodifiableSet(userNumbers);
-    }
 
     public Set<Integer> collectNumbers() {
         int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size();
@@ -46,9 +42,5 @@ public class UserNumbersSet implements UserNumbers {
             }
         }
         return userNumbers;
-    }
-
-    private boolean getFullSet () {
-        return userNumbers.size() == NumbersSetting.NUMBER_OF_NUMBERS;
     }
 }
