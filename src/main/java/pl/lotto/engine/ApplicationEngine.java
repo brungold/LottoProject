@@ -13,7 +13,7 @@ import java.util.Set;
 public class ApplicationEngine {
     public void start() {
         displayWelcomeMessage();
-        displayGameRules();
+        //displayGameRules();
         Set<Integer> userNumbersSet = getUserNumbersSet();
         Set<Integer> winningNumbers = getWiningNumbers();
         int result = getResult();

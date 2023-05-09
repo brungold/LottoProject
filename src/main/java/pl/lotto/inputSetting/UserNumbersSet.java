@@ -45,7 +45,6 @@ public class UserNumbersSet implements UserNumbers {
                 System.out.println(Messeges.WRONG_NUMBER);
             }
         }
-
         return userNumbers;
     }
 }
