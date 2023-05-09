@@ -28,7 +28,7 @@ public class UserNumbersSet implements UserNumbers {
         int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size();
         System.out.println("Enter " + remainingNumbers + " more numbers from 1 to 99. Press the ENTER button after each digit.");
 
-        while (userNumbers.size() < NumbersSetting.NUMBER_OF_NUMBERS) {
+        while (!getFullSet()) {
             String input = inputDataFromUser.inputFromUser();
             if (input.trim().isEmpty()) {
                 System.out.println("Please enter a number.");
@@ -46,5 +46,9 @@ public class UserNumbersSet implements UserNumbers {
             }
         }
         return userNumbers;
+    }
+
+    private boolean getFullSet () {
+        return userNumbers.size() == NumbersSetting.NUMBER_OF_NUMBERS;
     }
 }
