@@ -31,14 +31,24 @@ public class UserNumbersSet implements UserNumbers {
                 System.out.println("Please enter a number.");
                 int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size();
                 System.out.println("Enter " + remainingNumbers + " more numbers from 1 to 99. Press the ENTER button after each digit.");
-                if (verifyNumbers.isNumber(input) && numberRange.isInRange(Integer.parseInt(input))) {
-                    userNumbers.add(Integer.parseInt(input));
-                    System.out.println("Number " + input + " added. " + remainingNumbers + " more numbers needed.");
-                } else {
-                    System.out.println("Upsss, please check if this is the correct value.");
-                }
+                continue;
             }
-
+            int number;
+            try {
+                number = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number format. Please enter a number.");
+                continue;
+            }
+            if (!numberRange.isInRange(number)) {
+                System.out.println("Number out of range. Please enter a number from 1 to 99.");
+                continue;
+            }
+            if (!userNumbers.add(number)) {
+                System.out.println("Number already entered. Please enter a different number.");
+                continue;
+            }
+            System.out.println("Number " + number + " added. " + (NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size()) + " more numbers needed.");
         }
         return userNumbers;
     }
