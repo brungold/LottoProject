@@ -10,4 +10,6 @@ public class Messeges {
     public static final String LESS_HITS_THAN_FOUR = "You hit %d , unfortunately not this time...\n" +
             "Winning numbers were: %s and yours were: %s";
 
+    public static final String WRONG_NUMBER = "Upsss, please check if this is the correct value.";
+
 }

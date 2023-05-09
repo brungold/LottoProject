@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import pl.lotto.dataSetting.NumbersSetting;
+import pl.lotto.informationForTheUser.Messeges;
 
 public class UserNumbersSet implements UserNumbers {
     private final Set<Integer> userNumbers = new HashSet<>();
@@ -41,7 +42,7 @@ public class UserNumbersSet implements UserNumbers {
                     System.out.println("Number " + number + " added. " + remainingNumbers + " more numbers needed.");
                 }
             } else {
-                System.out.println("Upsss, please check if this is the correct value.");
+                System.out.println(Messeges.WRONG_NUMBER);
             }
         }
 
