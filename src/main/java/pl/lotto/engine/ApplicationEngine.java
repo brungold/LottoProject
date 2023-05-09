@@ -8,12 +8,12 @@ import pl.lotto.inputSetting.*;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.generateNumbers.ResultValidator;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class ApplicationEngine {
     public void start() {
         displayWelcomeMessage();
-        //displayGameRules();
         Set<Integer> userNumbersSet = getUserNumbersSet();
         Set<Integer> winningNumbers = getWiningNumbers();
         int result = getResult();
@@ -24,16 +24,12 @@ public class ApplicationEngine {
         System.out.println(Messeges.WELCOME_MESSAGE);
     }
 
-    private void displayGameRules() {
-        System.out.printf(Messeges.GAME_RULES, NumbersSetting.NUMBER_OF_NUMBERS, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT);
-        System.out.println();
-    }
-
     private Set<Integer> getUserNumbersSet() {
         InputDataFromUser inputData = new InputDataFromUser(System.in);
+        User user = new User();
         NumberRange numberRange = new RangeVerifier();
         VerifyNumbers verifyNumbers = new NumberVerifier();
-        UserNumbersSet userNumbersSet = new UserNumbersSet(inputData, numberRange, verifyNumbers);
+        UserNumbersSet userNumbersSet = new UserNumbersSet(inputData, user, numberRange, verifyNumbers);
         return userNumbersSet.collectNumbers();
     }
 
