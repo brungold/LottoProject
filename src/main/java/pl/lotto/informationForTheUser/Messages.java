@@ -1,6 +1,6 @@
 package pl.lotto.informationForTheUser;
 
-public class Messeges {
+public class Messages {
     public static final String WELCOME_MESSAGE = "Welcome in our lottery!";
     public static final String GAME_RULES = "You must enter %d digits from %d to %d. Press the ENTER button after each digit";
     public static final String GIVE_NUMBER = "Please enter a number.";

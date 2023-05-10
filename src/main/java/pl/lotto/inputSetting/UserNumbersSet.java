@@ -3,7 +3,7 @@ package pl.lotto.inputSetting;
 import java.util.Set;
 
 import pl.lotto.dataSetting.NumbersSetting;
-import pl.lotto.informationForTheUser.Messeges;
+import pl.lotto.informationForTheUser.Messages;
 
 public class UserNumbersSet {
     private final InputData inputDataFromUser;
@@ -22,23 +22,23 @@ public class UserNumbersSet {
 
     public Set<Integer> collectNumbers() {
         int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - user.getUserNumbers().size();
-        System.out.println(String.format(Messeges.GAME_RULES, remainingNumbers, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT));
+        System.out.println(String.format(Messages.GAME_RULES, remainingNumbers, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT));
 
         while (!user.getFullSet()) {
             String input = inputDataFromUser.inputFromUser();
             if (input.trim().isEmpty()) {
-                System.out.println(Messeges.GIVE_NUMBER);
+                System.out.println(Messages.GIVE_NUMBER);
             } else if (verifyNumbers.isNumber(input) && numberRange.isInRange(Integer.parseInt(input))) {
                 int number = Integer.parseInt(input);
                 if (user.getUserNumbers().contains(number)) {
-                    System.out.println(String.format(Messeges.REPEATED_NUMBER, number));
+                    System.out.println(String.format(Messages.REPEATED_NUMBER, number));
                 } else {
                     user.addNumber(number);
                     remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - user.getUserNumbers().size();
-                    System.out.println((String.format(Messeges.REMAINING_NUMBERS, number,remainingNumbers)));
+                    System.out.println((String.format(Messages.REMAINING_NUMBERS, number,remainingNumbers)));
                 }
             } else {
-                System.out.println(Messeges.WRONG_NUMBER);
+                System.out.println(Messages.WRONG_NUMBER);
             }
         }
         return user.getUserNumbers();

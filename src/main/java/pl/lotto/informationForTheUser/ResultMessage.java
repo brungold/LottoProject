@@ -1,12 +1,9 @@
 package pl.lotto.informationForTheUser;
 
-import pl.lotto.inputSetting.UserNumbersSet;
-import pl.lotto.informationForTheUser.Messeges;
-
 
 import java.util.Set;
 
-import static pl.lotto.informationForTheUser.Messeges.*;
+import static pl.lotto.informationForTheUser.Messages.*;
 
 public class ResultMessage {
     private final int result;

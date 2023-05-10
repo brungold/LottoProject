@@ -3,7 +3,7 @@ package pl.lotto.engine;
 
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.WiningNumbersGenerator;
-import pl.lotto.informationForTheUser.Messeges;
+import pl.lotto.informationForTheUser.Messages;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.*;
 import pl.lotto.generateNumbers.ResultValidator;
@@ -29,7 +29,7 @@ public class ApplicationEngine {
     }
 
     private static void displayWelcomeMessage() {
-        System.out.println(Messeges.WELCOME_MESSAGE);
+        System.out.println(Messages.WELCOME_MESSAGE);
     }
 
     private static Set<Integer> generateWinningNumbers() {
