@@ -3,6 +3,7 @@ package pl.lotto.engine;
 
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.WiningNumbersGenerator;
+import pl.lotto.informationForTheUser.Messeges;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.*;
 import pl.lotto.generateNumbers.ResultValidator;
@@ -19,23 +20,39 @@ import pl.lotto.inputSetting.UserNumbersSet;
 public class ApplicationEngine {
 
     public static void start(InputStream inputStream) {
+        displayWelcomeMessage();
         InputData inputData = new InputDataFromUser(inputStream);
+        Set<Integer> winningNumbersSet = generateWinningNumbers();
+        Set<Integer> userNumbers = getUserNumbers(inputData);
+        int result = validateResult(winningNumbersSet, userNumbers);
+        displayResultMessage(result, userNumbers, winningNumbersSet);
+    }
+
+    private static void displayWelcomeMessage() {
+        System.out.println(Messeges.WELCOME_MESSAGE);
+    }
+
+    private static Set<Integer> generateWinningNumbers() {
         GenerateNumbers generateNumbers = new WiningNumbersGenerator();
-        VerifyNumbers verifyNumbers = new NumberVerifier();
+        return generateNumbers.generateWiningNumbers();
+    }
+
+    private static Set<Integer> getUserNumbers(InputData inputData) {
         NumberRange numberRange = new RangeVerifier();
-
-
-        Set<Integer> winningNumbersSet = generateNumbers.generateWiningNumbers();
-
+        VerifyNumbers verifyNumbers = new NumberVerifier();
         User user = new User();
         UserNumbersSet userNumbersSet = new UserNumbersSet(inputData, numberRange, verifyNumbers, user);
-        Set<Integer> userNumbers = userNumbersSet.collectNumbers();
+        return userNumbersSet.collectNumbers();
+    }
 
+    private static int validateResult(Set<Integer> winningNumbersSet, Set<Integer> userNumbers) {
         ResultValidator resultValidator = new ResultValidator();
-        int result = resultValidator.validateNumbers(winningNumbersSet, userNumbers);
+        return resultValidator.validateNumbers(winningNumbersSet, userNumbers);
+    }
 
-        ResultMessage resultMessage = new ResultMessage(result, userNumbers, winningNumbersSet);
-        String message = resultMessage.getMessage(result, userNumbers, winningNumbersSet);
+    private static void displayResultMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumbers) {
+        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
+        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
         System.out.println(message);
     }
 }
@@ -48,9 +65,7 @@ public class ApplicationEngine {
 //        getResultMessage(result, userNumbersSet, winningNumbers);
 //    }
 //
-//    private void displayWelcomeMessage() {
-//        System.out.println(Messeges.WELCOME_MESSAGE);
-//    }
+
 //
 //    private Set<Integer> getUserNumbersSet() {
 //        InputDataFromUser inputData = new InputDataFromUser(System.in);
