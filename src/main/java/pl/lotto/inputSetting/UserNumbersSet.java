@@ -8,13 +8,13 @@ import pl.lotto.dataSetting.NumbersSetting;
 import pl.lotto.informationForTheUser.Messeges;
 
 public class UserNumbersSet {
-    private final InputDataFromUser inputDataFromUser;
+    private final InputData inputDataFromUser;
     private final NumberRange numberRange;
     private final VerifyNumbers verifyNumbers;
     private final User user;
 
 
-    public UserNumbersSet(InputDataFromUser inputDataFromUser,User user ,NumberRange numberRange, VerifyNumbers verifyNumbers) {
+    public UserNumbersSet(InputData inputDataFromUser, NumberRange numberRange, VerifyNumbers verifyNumbers, User user) {
         this.inputDataFromUser = inputDataFromUser;
         this.numberRange = numberRange;
         this.verifyNumbers = verifyNumbers;
