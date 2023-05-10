@@ -57,39 +57,3 @@ public class ApplicationEngine {
     }
 }
 
-//    public void start() {
-//        displayWelcomeMessage();
-//        Set<Integer> userNumbersSet = getUserNumbersSet();
-//        Set<Integer> winningNumbers = getWiningNumbers();
-//        int result = getResult();
-//        getResultMessage(result, userNumbersSet, winningNumbers);
-//    }
-//
-
-//
-//    private Set<Integer> getUserNumbersSet() {
-//        InputDataFromUser inputData = new InputDataFromUser(System.in);
-//        User user = new User();
-//        NumberRange numberRange = new RangeVerifier();
-//        VerifyNumbers verifyNumbers = new NumberVerifier();
-//        UserNumbersSet userNumbersSet = new UserNumbersSet(inputData, user, numberRange, verifyNumbers);
-//        return userNumbersSet.collectNumbers();
-//    }
-//
-//    private Set<Integer> getWiningNumbers() {
-//        WiningNumbersGenerator generateNumbers = new WiningNumbersGenerator();
-//        return generateNumbers.generateWiningNumbers();
-//    }
-//
-//    private int getResult() {
-//        Validator validator = new ResultValidator();
-//        return validator.validateNumbers(getUserNumbersSet(), getWiningNumbers());
-//    }
-//
-//    private ResultMessage getResultMessage(int result, Set<Integer> userNumbersSet, Set<Integer> winningNumbers) {
-//        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
-//        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
-//        System.out.println(message);
-//        return resultMessage;
-//    }
-//}
