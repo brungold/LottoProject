@@ -1,7 +1,5 @@
 package pl.lotto.inputSetting;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 import pl.lotto.dataSetting.NumbersSetting;
@@ -24,7 +22,7 @@ public class UserNumbersSet {
 
     public Set<Integer> collectNumbers() {
         int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - user.getUserNumbers().size();
-        System.out.println("Enter " + remainingNumbers + " more numbers from 1 to 99. Press the ENTER button after each digit.");
+        System.out.println(String.format(Messeges.REMAINING_NUMBERS, remainingNumbers, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT));
 
         while (!user.getFullSet()) {
             String input = inputDataFromUser.inputFromUser();
