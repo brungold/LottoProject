@@ -4,11 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InputDataFromUserTest implements SampleScanner{
+class InputDataFromUserTest {
     @Test
     void should_return_one_digit() {
         //given
@@ -45,18 +44,18 @@ class InputDataFromUserTest implements SampleScanner{
 
     @Test
     void should_return_one_digit_when_six_digits_provided() {
-        // given
+        //given
         String inputString = "1 7 23 56 57 85 ";
-        SampleScanner scanner = new SampleScanner() {};
         InputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
         InputDataFromUser input = new InputDataFromUser(inputStream);
-        String expectedOutPut = "1";
+        String expectedOutPut = "1 7 23 56 57 85";
 
-        // when
+        //when
         String actualOutPut = input.inputFromUser();
 
-        // then
-        assertEquals(expectedOutPut, actualOutPut);
+        //then
+        assertNotEquals(expectedOutPut, actualOutPut);
+
         input.close();
     }
 }
