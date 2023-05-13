@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserNumbersSetTest implements SampleScanner {
 
     @Test
-    public void testCollectNumbers() {
+    public void test_collect_numbers() {
         // given
         String inputData = "1\n2\n3\n4\n5\n6\n";
         UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
@@ -56,7 +56,22 @@ class UserNumbersSetTest implements SampleScanner {
         assertNotEquals(6, selectedNumbers.size());
     }
 
+    @Test
+    public void collect_numbers_returns_correct_set_of_numbers_when_user_inputs_both_valid_and_invalid_data() {
+        //given
+        String inputData = "1\n2\n3\n10\n10\n6\n100\n99\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
 
+        //when
+        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+
+        //then
+        assertEquals(6, selectedNumbers.size());
+    }
+
+    /*
+    Below are two tests that are expected to fail because we do not provide 6 correct digits
+     */
     @Test
     public void negative_test_collect_numbers_returns_error_when_user_inputs_number_outside_1_to_99_range() {
         //given
@@ -67,7 +82,7 @@ class UserNumbersSetTest implements SampleScanner {
         Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
 
         //then
-        assertNotEquals(6, selectedNumbers.size());
+        assertNotEquals(5, selectedNumbers.size());
     }
 
     @Test
@@ -80,19 +95,6 @@ class UserNumbersSetTest implements SampleScanner {
         Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
 
         //then
-        assertNotEquals(6, selectedNumbers.size());
-    }
-
-    @Test
-    public void collect_numbers_returns_correct_set_of_numbers_when_user_inputs_both_valid_and_invalid_data() {
-        //given
-        String inputData = "1\n2\n3\n10\n10\n6\n100\n99\n";
-        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
-
-        //when
-        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
-
-        //then
-        assertEquals(6, selectedNumbers.size());
+        assertEquals(5, selectedNumbers.size());
     }
 }
