@@ -6,12 +6,17 @@ import java.io.ByteArrayInputStream;
 
 public interface SampleScanner {
 
-    default Scanner createSampleScanner(String data) {
-        InputStream input = System.in;
+    default InputData createInputData(String data) {
+        InputStream input = new ByteArrayInputStream(data.getBytes());
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Scanner scanner = new Scanner(System.in);
+        InputData inputData = new InputDataFromUser(input);
         System.setIn(input);
-        return scanner;
+        return inputData;
+    }
+
+    default UserNumbersSet createUserNumbersSet(String data) {
+        InputData inputData = createInputData(data);
+        return new UserNumbersSet(inputData, new RangeVerifier(), new NumberVerifier(), new User());
     }
 }
 
