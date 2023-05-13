@@ -1,6 +1,6 @@
 package pl.lotto.inputSetting;
 
-public class NumberVerifier implements VerifyNumbers{
+public class NumberVerifier implements VerifyNumbers {
     @Override
     public boolean isNumber(String str) {
         if (str == null) {

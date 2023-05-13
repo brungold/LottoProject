@@ -35,7 +35,7 @@ public class UserNumbersSet {
                 } else {
                     user.addNumber(number);
                     remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - user.getUserNumbers().size();
-                    System.out.println((String.format(Messages.REMAINING_NUMBERS, number,remainingNumbers)));
+                    System.out.println((String.format(Messages.REMAINING_NUMBERS, number, remainingNumbers)));
                 }
             } else {
                 System.out.println(Messages.WRONG_NUMBER);
