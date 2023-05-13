@@ -44,7 +44,7 @@ class UserNumbersSetTest implements SampleScanner {
     }
 
     @Test
-    public void collect_numbers_returns_error_when_user_inputs_less_than_6_numbers() {
+    public void negative_test_collect_numbers_returns_error_when_user_inputs_less_than_6_numbers() {
         //given
         String inputData = "1\n2\n3\n4\n5\n";
         UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
@@ -56,18 +56,18 @@ class UserNumbersSetTest implements SampleScanner {
         assertNotEquals(6, selectedNumbers.size());
     }
 
-    @Test
-    public void collect_numbers_returns_error_when_user_inputs_more_than_6_numbers() {
-        //given
-        //when
-        //then
-    }
 
     @Test
-    public void collect_numbers_returns_error_when_user_inputs_number_outside_1_to_99_range() {
+    public void negative_test_collect_numbers_returns_error_when_user_inputs_number_outside_1_to_99_range() {
         //given
+        String inputData = "1\n2\n3\n100\n5\n6\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+
         //when
+        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+
         //then
+        assertNotEquals(6, selectedNumbers.size());
     }
 
     @Test
