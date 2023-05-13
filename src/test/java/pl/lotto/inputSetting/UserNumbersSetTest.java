@@ -2,6 +2,8 @@ package pl.lotto.inputSetting;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,8 +32,15 @@ class UserNumbersSetTest implements SampleScanner {
     @Test
     public void collect_numbers_returns_correct_set_of_numbers_when_user_inputs_valid_data() {
         //given
+        String inputData = "10\n24\n15\n23\n18\n99\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+
         //when
+        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+
         //then
+        Set<Integer> expectedNumbers = new HashSet<>(Arrays.asList(99, 18, 23, 15, 24, 10));
+        assertEquals(expectedNumbers, selectedNumbers);
     }
 
     @Test
