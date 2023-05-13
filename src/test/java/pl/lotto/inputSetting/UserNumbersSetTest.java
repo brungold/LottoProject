@@ -71,16 +71,28 @@ class UserNumbersSetTest implements SampleScanner {
     }
 
     @Test
-    public void collect_numbers_returns_error_when_user_inputs_duplicate_number() {
+    public void negative_test_collect_numbers_returns_error_when_user_inputs_duplicate_number() {
         //given
+        String inputData = "1\n2\n3\n10\n10\n6\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+
         //when
+        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+
         //then
+        assertNotEquals(6, selectedNumbers.size());
     }
 
     @Test
     public void collect_numbers_returns_correct_set_of_numbers_when_user_inputs_both_valid_and_invalid_data() {
         //given
+        String inputData = "1\n2\n3\n10\n10\n6\n100\n99\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+
         //when
+        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+
         //then
+        assertEquals(6, selectedNumbers.size());
     }
 }
