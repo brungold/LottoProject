@@ -21,5 +21,4 @@ public class User implements UserNumbers {
         return Collections.unmodifiableSet(selectedNumbers);
 
     }
-
 }
