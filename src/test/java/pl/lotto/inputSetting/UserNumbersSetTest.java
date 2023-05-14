@@ -1,7 +1,11 @@
 package pl.lotto.inputSetting;
 
 import org.junit.jupiter.api.Test;
+import pl.lotto.informationForTheUser.Messages;
 
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -96,5 +100,23 @@ class UserNumbersSetTest implements SampleScanner {
 
         //then
         assertEquals(5, selectedNumbers.size());
+    }
+
+    @Test
+    void test_collect_numbers_wrong_number() {
+        // given
+        String inputData = "pięć\n";
+        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        // when
+        userNumbersSet.collectNumbers();
+
+        // then
+        String expectedMessage = "Upsss, please check if this is the correct value.\n";
+        assertEquals(expectedMessage, Messages.WRONG_NUMBER);
+        assertEquals("You must enter 6 digits from 1 to 99. Press the ENTER button after each digit\npięć\nUpsss, please check if this is the correct value.\n", outContent.toString());
     }
 }
