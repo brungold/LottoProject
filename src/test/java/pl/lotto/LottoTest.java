@@ -1,45 +1,53 @@
-package pl.lotto.engine;
+package pl.lotto;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import pl.lotto.engine.ApplicationEngine;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.informationForTheUser.ResultMessage;
-import pl.lotto.inputSetting.*;
+import pl.lotto.inputSetting.User;
+import pl.lotto.inputSetting.UserNumbersSet;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class ApplicationEngineTest {
-    private static final UserNumbersSet userNumbersSetMock = mock(UserNumbersSet.class);
-    private static final ResultMessage resultMessage = mock(ResultMessage.class);
+
+class LottoTest {
     private static final Validator validatorMock = mock(Validator.class);
     private static final GenerateNumbers generateNumbersMock = mock(GenerateNumbers.class);
+    private static final User userMock = mock(User.class);
+    private static final UserNumbersSet userNumbersSetMock = mock(UserNumbersSet.class);
+    private static final ResultMessage resultMessageMock = mock(ResultMessage.class);
+
+
 
 
     @ParameterizedTest(name = "Test case {index}: {3}")
     @MethodSource("provideUserNumbersAndMessages")
     void shouldReturnCorrectMessageWhenParametersWereGiven(int result,
-                                                           Set<Integer> winningNumbers,
+                                                           Set<Integer> lotteryNumbers,
                                                            Set<Integer> userNumbers,
                                                            String expectedMessage) {
 
-        // given
-        mockNumbers(userNumbers, winningNumbers);
-        mockResultValidator(userNumbers, winningNumbers);
+        //given
+        mockNumbers(lotteryNumbers, userNumbers);
+        ResultMessage resultMessageMock = new ResultMessage(result, lotteryNumbers, userNumbers);
+        mockResultValidator(userNumbers, lotteryNumbers);
         String inputData = userNumbers.toString().replaceAll("[\\[\\]\\s]", "")
                 .replaceAll("", "\n")
                 + "\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(inputData.getBytes());
-
 
 
         // when
@@ -47,7 +55,7 @@ class ApplicationEngineTest {
         engine.start(inputStream);
 
         // then
-        assertEquals(expectedMessage, resultMessage.getMessage(result, winningNumbers, userNumbers));
+        assertEquals(expectedMessage, resultMessageMock.getMessage(result, lotteryNumbers, userNumbers));
     }
 
     private static Stream<Arguments> provideUserNumbersAndMessages() {
@@ -71,10 +79,9 @@ class ApplicationEngineTest {
 
         return Stream.of(argument1, argument2, argument3);
     }
-
-    private void mockNumbers(Set<Integer> userNumbers, Set<Integer> winingNumbers) {
+    private void mockNumbers(Set<Integer> lotteryNumbers, Set<Integer> userNumbers) {
+        when(generateNumbersMock.generateWiningNumbers()).thenReturn(lotteryNumbers);
         when(userNumbersSetMock.collectNumbers()).thenReturn(userNumbers);
-        when(generateNumbersMock.generateWiningNumbers()).thenReturn(winingNumbers);
     }
 
     private int mockResultValidator(Set<Integer> userNumbers, Set<Integer> winingNumbers) {
@@ -82,3 +89,4 @@ class ApplicationEngineTest {
         return result;
     }
 }
+
