@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import pl.lotto.engine.ApplicationEngine;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.Validator;
+import pl.lotto.generateNumbers.WiningNumbersGenerator;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.User;
 import pl.lotto.inputSetting.UserNumbersSet;
@@ -26,9 +27,11 @@ import static org.mockito.Mockito.when;
 class LottoTest {
     private static final Validator validatorMock = mock(Validator.class);
     private static final GenerateNumbers generateNumbersMock = mock(GenerateNumbers.class);
+    private static final WiningNumbersGenerator winingNumbersGeneratorMock = mock(WiningNumbersGenerator.class);
     private static final User userMock = mock(User.class);
     private static final UserNumbersSet userNumbersSetMock = mock(UserNumbersSet.class);
     private static final ResultMessage resultMessageMock = mock(ResultMessage.class);
+    private static final ApplicationEngine engineMock = mock(ApplicationEngine.class);
 
 
 
@@ -41,7 +44,8 @@ class LottoTest {
                                                            String expectedMessage) {
 
         //given
-        mockNumbers(lotteryNumbers, userNumbers);
+        when(winingNumbersGeneratorMock.generateWiningNumbers()).thenReturn(lotteryNumbers);
+        when(userNumbersSetMock.collectNumbers()).thenReturn(userNumbers);
         ResultMessage resultMessageMock = new ResultMessage(result, lotteryNumbers, userNumbers);
         mockResultValidator(userNumbers, lotteryNumbers);
         String inputData = userNumbers.toString().replaceAll("[\\[\\]\\s]", "")
@@ -51,37 +55,33 @@ class LottoTest {
 
 
         // when
-        ApplicationEngine engine = new ApplicationEngine();
-        engine.start(inputStream);
+        ApplicationEngine engineMock = new ApplicationEngine();
+        engineMock.start(inputStream);
 
         // then
-        assertEquals(expectedMessage, resultMessageMock.getMessage(result, lotteryNumbers, userNumbers));
+        assertEquals(expectedMessage, resultMessageMock);
     }
 
     private static Stream<Arguments> provideUserNumbersAndMessages() {
         final Arguments argument1 = Arguments.of(6,
-                Collections.unmodifiableSet(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6))),
+                new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)),
                 new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)),
                 "Congratulations you hit 6 digits! Splendidly! You won the grand prize! \n" +
                         "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 3, 4, 5, 6]");
 
         final Arguments argument2 = Arguments.of(4,
-                Collections.unmodifiableSet(new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16))),
+                new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16)),
                 new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)),
                 "You hit 4 digits! Congratulations!\n" +
                         "Winning numbers were: [1, 2, 3, 4, 15, 16] and yours were: [1, 2, 3, 4, 5, 6]");
 
         final Arguments argument3 = Arguments.of(1,
-                Collections.unmodifiableSet(new HashSet<>(Arrays.asList(1, 12, 13, 14, 15, 16))),
+                new HashSet<>(Arrays.asList(1, 12, 13, 14, 15, 16)),
                 new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6)),
                 "You hit 1 , unfortunately not this time...\n" +
                         "Winning numbers were: [1, 2, 3, 4, 15, 16] and yours were: [1, 2, 3, 4, 5, 6]");
 
         return Stream.of(argument1, argument2, argument3);
-    }
-    private void mockNumbers(Set<Integer> lotteryNumbers, Set<Integer> userNumbers) {
-        when(generateNumbersMock.generateWiningNumbers()).thenReturn(lotteryNumbers);
-        when(userNumbersSetMock.collectNumbers()).thenReturn(userNumbers);
     }
 
     private int mockResultValidator(Set<Integer> userNumbers, Set<Integer> winingNumbers) {
