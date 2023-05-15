@@ -19,7 +19,7 @@ import pl.lotto.inputSetting.UserNumbersSet;
 
 public class ApplicationEngine {
 
-    public static void start(InputStream inputStream) {
+    public void start(InputStream inputStream) {
         displayWelcomeMessage();
         InputData inputData = new InputDataFromUser(inputStream);
         Set<Integer> winningNumbersSet = generateWinningNumbers();
