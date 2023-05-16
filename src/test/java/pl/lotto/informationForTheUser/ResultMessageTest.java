@@ -1,97 +1,61 @@
 package pl.lotto.informationForTheUser;
 
 import org.junit.jupiter.api.Test;
-
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class ResultMessageTest {
 
-class ResultMessageTest {
     @Test
-    public void test_get_message_six_hits() {
-        //given
-        Set<Integer> userNumbersSet = new HashSet<>();
-        userNumbersSet.add(1);
-        userNumbersSet.add(2);
-        userNumbersSet.add(3);
-        userNumbersSet.add(4);
-        userNumbersSet.add(5);
-        userNumbersSet.add(6);
+    public void test_winning_message() {
+        // Given
+        int result = 6;
+        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
 
-        Set<Integer> winningNumbers = new HashSet<>();
-        winningNumbers.add(1);
-        winningNumbers.add(2);
-        winningNumbers.add(3);
-        winningNumbers.add(4);
-        winningNumbers.add(5);
-        winningNumbers.add(6);
+        // When
+        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
 
-        //when
-        ResultMessage resultMessage = new ResultMessage(6, userNumbersSet, winningNumbers);
+        // Then
         String expectedMessage = "Congratulations you hit 6 digits! Splendidly! You won the grand prize! \n" +
                 "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 3, 4, 5, 6]";
-        String actualMessage = resultMessage.getMessage(6, userNumbersSet, winningNumbers);
-
-        //then
-        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, message);
     }
 
     @Test
-    public void test_get_message_five_or_four_hits() {
-        //given
-        Set<Integer> userNumbersSet = new HashSet<>();
-        userNumbersSet.add(1);
-        userNumbersSet.add(2);
-        userNumbersSet.add(3);
-        userNumbersSet.add(4);
-        userNumbersSet.add(5);
-        userNumbersSet.add(6);
+    public void test_hit_four_or_five_message() {
+        // Given
+        int result = 4;
+        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
 
-        Set<Integer> winningNumbers = new HashSet<>();
-        winningNumbers.add(1);
-        winningNumbers.add(2);
-        winningNumbers.add(3);
-        winningNumbers.add(4);
-        winningNumbers.add(5);
-        winningNumbers.add(7);
+        // When
+        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
 
-        //when
-        ResultMessage resultMessage = new ResultMessage(5, winningNumbers, userNumbersSet);
-        String expectedMessage = "You hit 5 digits! Congratulations!\n" +
-                "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 3, 4, 5, 7]";
-        String actualMessage = resultMessage.getMessage(5, winningNumbers, userNumbersSet);
-
-        //then
-        assertEquals(expectedMessage, actualMessage);
+        // Then
+        String expectedMessage = "You hit 4 digits! Congratulations!\n" +
+                "Winning numbers were: [1, 2, 3, 4, 15, 16] and yours were: [1, 2, 3, 4, 5, 6]";
+        assertEquals(expectedMessage, message);
     }
 
     @Test
-    public void test_get_message_for_five_to_zero_hits() {
-        //given
-        Set<Integer> userNumbersSet = new HashSet<>();
-        userNumbersSet.add(1);
-        userNumbersSet.add(2);
-        userNumbersSet.add(5);
-        userNumbersSet.add(6);
-        userNumbersSet.add(7);
-        userNumbersSet.add(8);
+    public void test_less_hits_than_four_message() {
+        // Given
+        int result = 1;
+        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 12, 23, 34, 55, 46));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
 
-        Set<Integer> winningNumbers = new HashSet<>();
-        winningNumbers.add(1);
-        winningNumbers.add(45);
-        winningNumbers.add(56);
-        winningNumbers.add(76);
-        winningNumbers.add(77);
-        winningNumbers.add(92);
+        // When
+        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
 
-        //when
-        ResultMessage resultMessage = new ResultMessage(1, winningNumbers, userNumbersSet);
+        // Then
         String expectedMessage = "You hit 1 , unfortunately not this time...\n" +
-                "Winning numbers were: [1, 2, 5, 6, 7, 8] and yours were: [1, 56, 76, 92, 45, 77]";
-        String actualMessage = resultMessage.getMessage(1, winningNumbers, userNumbersSet);
-
-        //then
-        assertEquals(expectedMessage, actualMessage);
+                "Winning numbers were: [1, 12, 23, 34, 55, 46] and yours were: [1, 2, 3, 4, 5, 6]";
+        assertEquals(expectedMessage, message);
     }
 }
