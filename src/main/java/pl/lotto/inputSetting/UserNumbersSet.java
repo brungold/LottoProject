@@ -7,7 +7,7 @@ import java.util.Set;
 import pl.lotto.dataSetting.NumbersSetting;
 import pl.lotto.informationForTheUser.Messages;
 
-public class UserNumbersSet implements NumberRange, VerifyNumbers, UserNumbers{
+public class UserNumbersSet implements NumberRange, VerifyNumbers, UserNumbers {
 
     public Set<Integer> collectUserNumbers(Scanner scanner) {
         Set<Integer> userNumbers = new HashSet<>();
@@ -34,6 +34,7 @@ public class UserNumbersSet implements NumberRange, VerifyNumbers, UserNumbers{
         scanner.close();
         return userNumbers;
     }
+
     private boolean getFullSet(Set<Integer> userNumbers) {
         return userNumbers.size() == NumbersSetting.NUMBER_OF_NUMBERS;
     }

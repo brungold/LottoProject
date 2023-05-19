@@ -14,7 +14,6 @@ public class ResultMessage {
     private final Set<Integer> winningNumbers;
 
 
-
     public String getMessage() {
         switch (result) {
             case 6:
