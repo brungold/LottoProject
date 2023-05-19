@@ -18,14 +18,14 @@ public class ResultMessage {
     public String getMessage() {
         switch (result) {
             case 6:
-                return String.format(WINNING_MESSAGE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(WINNING_MESSAGE, result, setToString(winningNumbers), setToString(userNumbersSet));
 
             case 5:
             case 4:
-                return String.format(HIT_FOUR_OR_FIVE, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(HIT_FOUR_OR_FIVE, result, setToString(winningNumbers), setToString(userNumbersSet));
 
             default:
-                return String.format(LESS_HITS_THAN_FOUR, result, setToString(getWinningNumbers()), setToString(getUserNumbersSet()));
+                return String.format(LESS_HITS_THAN_FOUR, result, setToString(winningNumbers), setToString(userNumbersSet));
         }
     }
 
