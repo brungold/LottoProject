@@ -1,6 +1,7 @@
 package pl.lotto.engine;
 
 
+import lombok.Data;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.generateNumbers.WiningNumbersGenerator;
@@ -18,6 +19,7 @@ import pl.lotto.inputSetting.InputDataFromUser;
 import pl.lotto.inputSetting.NumberRange;
 import pl.lotto.inputSetting.NumberVerifier;
 import pl.lotto.inputSetting.UserNumbersSet;
+@Data
 
 public class ApplicationEngine {
     private final ResultMessage resultMessage;
