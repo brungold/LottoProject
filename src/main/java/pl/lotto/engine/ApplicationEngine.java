@@ -28,11 +28,7 @@ public class ApplicationEngine {
 
     public void start(InputStream inputStream) {
         displayWelcomeMessage();
-        InputData inputData = new InputDataFromUser(inputStream);
-        Set<Integer> winningNumbersSet = generateWinningNumbers();
-        Set<Integer> userNumbers = getUserNumbers(inputData);
-        int result = validateResult(winningNumbersSet, userNumbers);
-        displayResultMessage(result, userNumbers, winningNumbersSet);
+        processNumbers();
     }
 
     private static void displayWelcomeMessage() {
