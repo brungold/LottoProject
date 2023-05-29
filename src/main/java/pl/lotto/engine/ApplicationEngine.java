@@ -14,7 +14,6 @@ import java.util.Set;
 
 
 @Data
-
 public class ApplicationEngine implements StartGame{
     private final ResultMessage resultMessage;
     private final Validator validator;
@@ -24,7 +23,7 @@ public class ApplicationEngine implements StartGame{
 
     public ResultMessage start() {
         displayWelcomeMessage();
-        processNumbers();
+        return processNumbers();
     }
 
     private static void displayWelcomeMessage() {
