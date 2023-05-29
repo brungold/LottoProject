@@ -5,6 +5,7 @@ import lombok.Data;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.informationForTheUser.Messages;
+import pl.lotto.informationForTheUser.Result;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.*;
 
@@ -14,14 +15,16 @@ import java.util.Set;
 
 @Data
 public class ApplicationEngine{
-    private final ResultMessage resultMessage;
-    private final Validator validator;
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
+    private final Validator validator;
+    private final ResultMessage resultMessage;
+
     private final Scanner scanner;
 
-    public ResultMessage start() {
-
+    public void start() {
+        displayWelcomeMessage();
+        resultMessage.getMessage();
     }
 
     private static void displayWelcomeMessage() {
@@ -31,8 +34,7 @@ public class ApplicationEngine{
     private ResultMessage processNumbers() {
         final Set <Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
         final Set <Integer> winningNumbers = generateNumbers.generateWiningNumbers();
-        validator.validateNumbers(winningNumbers, numbersFromUser);
+        return validator.validateNumbers(winningNumbers, numbersFromUser);
     }
-
 }
 
