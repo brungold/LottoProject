@@ -22,8 +22,8 @@ public class Lotto{
         final GenerateNumbers generateNumbers = new WiningNumbersGenerator();
         final UserNumbers userNumbers = new UserNumbersSet();
         final Validator validator = new ResultValidator();
-        final ResultMessage resultMessage = new ResultMessage();
         final Scanner scanner = new Scanner(System.in);
+        return ApplicationEngine(generateNumbers, userNumbers, validator, scanner,)
     }
 
 }

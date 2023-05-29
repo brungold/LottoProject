@@ -18,23 +18,23 @@ public class ApplicationEngine{
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
     private final Validator validator;
-    private final ResultMessage resultMessage;
 
     private final Scanner scanner;
 
-    public void start() {
+    public ResultMessage start() {
         displayWelcomeMessage();
-        resultMessage.getMessage();
+        return getGameResult();
     }
 
     private static void displayWelcomeMessage() {
         System.out.println(Messages.WELCOME_MESSAGE);
     }
 
-    private ResultMessage processNumbers() {
+    private ResultMessage getGameResult() {
         final Set <Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
         final Set <Integer> winningNumbers = generateNumbers.generateWiningNumbers();
-        return validator.validateNumbers(winningNumbers, numbersFromUser);
+        final int result =  validator.validateNumbers(winningNumbers, numbersFromUser);
+        return new ResultMessage(result, numbersFromUser, winningNumbers);
     }
 }
 
