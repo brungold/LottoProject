@@ -23,7 +23,7 @@ public class ApplicationEngine{
     public ResultMessage start() {
         displayWelcomeMessage();
         processNumbers();
-        resultMessage.getMessage();
+
     }
 
     private static void displayWelcomeMessage() {
@@ -33,7 +33,8 @@ public class ApplicationEngine{
     private ResultMessage processNumbers() {
         final Set <Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
         final Set <Integer> winningNumbers = generateNumbers.generateWiningNumbers();
-        return validator.validateNumbers(numbersFromUser, winningNumbers);
+        validator.validateNumbers(winningNumbers, numbersFromUser);
     }
+
 }
 
