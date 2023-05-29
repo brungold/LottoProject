@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @Data
-public class ApplicationEngine implements StartGame{
+public class ApplicationEngine{
     private final ResultMessage resultMessage;
     private final Validator validator;
     private final GenerateNumbers generateNumbers;
