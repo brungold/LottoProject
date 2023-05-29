@@ -7,7 +7,6 @@ import pl.lotto.generateNumbers.Validator;
 import pl.lotto.informationForTheUser.Messages;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.*;
-import pl.lotto.StartGame;
 
 import java.util.Scanner;
 import java.util.Set;
@@ -23,7 +22,8 @@ public class ApplicationEngine implements StartGame{
 
     public ResultMessage start() {
         displayWelcomeMessage();
-        return processNumbers();
+        processNumbers();
+        resultMessage.getMessage();
     }
 
     private static void displayWelcomeMessage() {
