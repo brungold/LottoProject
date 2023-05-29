@@ -7,9 +7,10 @@ import java.util.Set;
 
 public class ResultValidator implements Validator {
     @Override
-    public int validateNumbers(Set<Integer> userNumbers, Set<Integer> winningNumbers) {
+    public ResultMessage validateNumbers(Set<Integer> userNumbers, Set<Integer> winningNumbers) {
         Set<Integer> commonElements = new HashSet<>(userNumbers);
         commonElements.retainAll(winningNumbers);
-        return commonElements.size();
+        int result = commonElements.size();
+        return new ResultMessage(result, userNumbers, winningNumbers);
     }
 }

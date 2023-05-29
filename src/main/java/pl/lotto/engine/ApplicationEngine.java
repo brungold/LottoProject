@@ -21,8 +21,6 @@ public class ApplicationEngine{
     private final Scanner scanner;
 
     public ResultMessage start() {
-        displayWelcomeMessage();
-        processNumbers();
 
     }
 
