@@ -20,9 +20,13 @@ public class ApplicationEngine{
     private final Scanner scanner;
 
     public String start() {
-        displayWelcomeMessage();
-        ResultMessage resultMessage = getGameResult();
-        return resultMessage.getMessage();
+        try {
+            displayWelcomeMessage();
+            ResultMessage resultMessage = getGameResult();
+            return resultMessage.getMessage();
+        } finally {
+            scanner.close();
+        }
     }
 
     private static void displayWelcomeMessage() {
