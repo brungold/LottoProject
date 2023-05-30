@@ -15,17 +15,13 @@ public class ResultMessage implements Result {
 
 
     public String getMessage() {
-        switch (result) {
-            case 6:
-                return String.format(WINNING_MESSAGE, result, setToString(winningNumbers), setToString(userNumbersSet));
-
-            case 5:
-            case 4:
-                return String.format(HIT_FOUR_OR_FIVE, result, setToString(winningNumbers), setToString(userNumbersSet));
-
-            default:
-                return String.format(LESS_HITS_THAN_FOUR, result, setToString(winningNumbers), setToString(userNumbersSet));
-        }
+        return switch (result) {
+            case 6 -> String.format(WINNING_MESSAGE, result, setToString(winningNumbers), setToString(userNumbersSet));
+            case 5, 4 ->
+                    String.format(HIT_FOUR_OR_FIVE, result, setToString(winningNumbers), setToString(userNumbersSet));
+            default ->
+                    String.format(LESS_HITS_THAN_FOUR, result, setToString(winningNumbers), setToString(userNumbersSet));
+        };
     }
 
     private static String setToString(Set<Integer> set) {
