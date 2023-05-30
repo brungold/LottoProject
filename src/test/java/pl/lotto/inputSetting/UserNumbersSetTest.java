@@ -6,31 +6,27 @@ import pl.lotto.informationForTheUser.Messages;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 
 class UserNumbersSetTest implements SampleScanner {
+    UserNumbersSet userNumbersSet = new UserNumbersSet();
 
     @Test
     public void test_collect_numbers() {
         // given
+        Set<Integer> expectedNumbers = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(1,2,3,4,5,6)));
         String inputData = "1\n2\n3\n4\n5\n6\n";
-        UserNumbersSet userNumbersSet = createUserNumbersSet(inputData);
+        Scanner userNumbers = createSampleScanner(inputData);
 
         // when
-        Set<Integer> selectedNumbers = userNumbersSet.collectNumbers();
+        final Set<Integer> selectedNumbers = userNumbersSet.collectUserNumbers(userNumbers);
 
         // then
-        assertEquals(6, selectedNumbers.size());
-        assertTrue(selectedNumbers.contains(1));
-        assertTrue(selectedNumbers.contains(2));
-        assertTrue(selectedNumbers.contains(3));
-        assertTrue(selectedNumbers.contains(4));
-        assertTrue(selectedNumbers.contains(5));
-        assertTrue(selectedNumbers.contains(6));
+        assertThat(expectedNumbers).isEqualTo(selectedNumbers);
     }
 
     @Test

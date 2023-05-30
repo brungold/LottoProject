@@ -1,6 +1,5 @@
 package pl.lotto.generateNumbers;
 
-import pl.lotto.informationForTheUser.ResultMessage;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,6 @@
 package pl.lotto.generateNumbers;
 
 import java.security.SecureRandom;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
