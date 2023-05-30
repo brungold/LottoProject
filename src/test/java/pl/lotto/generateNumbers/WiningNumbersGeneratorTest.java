@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WiningNumbersGeneratorTest {
     @Test
-    public void test_generate_wining_numbers_uniqueness() {
+    public void should_generate_wining_numbers_uniqueness() {
         //given
         WiningNumbersGenerator winingNumbersGenerator = new WiningNumbersGenerator();
 
@@ -24,7 +24,7 @@ class WiningNumbersGeneratorTest {
     }
 
     @Test
-    public void test_generate_wining_numbers_range() {
+    public void should_generate_wining_numbers_range() {
         // given
         GenerateNumbers winingNumbersGenerator = new WiningNumbersGenerator();
         int expectedSize = NumbersSetting.NUMBER_OF_NUMBERS;
@@ -44,7 +44,7 @@ class WiningNumbersGeneratorTest {
     }
 
     @Test
-    public void test_generate_wining_numbers_returns_numbers_in_random_order() {
+    public void should_generate_wining_numbers_returns_numbers_in_random_order() {
         // given
         GenerateNumbers winingNumbersGenerator = new WiningNumbersGenerator();
 
