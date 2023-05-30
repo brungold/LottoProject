@@ -4,7 +4,6 @@ import lombok.Data;
 import pl.lotto.engine.ApplicationEngine;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.ResultValidator;
-import pl.lotto.generateNumbers.Validator;
 import pl.lotto.generateNumbers.WiningNumbersGenerator;
 import pl.lotto.inputSetting.UserNumbers;
 import pl.lotto.inputSetting.UserNumbersSet;
@@ -20,11 +19,7 @@ public class Lotto{
         userNumbers = new UserNumbersSet();
         scanner = new Scanner(System.in);
     }
-    public static void main(String[] args) {
-        Lotto lotto = new Lotto();
-        lotto.playGame();
-    }
-    private void playGame() {
+    protected void playGame() {
         ApplicationEngine engine = new ApplicationEngine(generateNumbers, userNumbers, new ResultValidator(), scanner);
         String resultMessage = engine.start();
         System.out.println(resultMessage);
