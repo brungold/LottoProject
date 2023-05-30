@@ -10,7 +10,7 @@ import pl.lotto.inputSetting.UserNumbersSet;
 
 import java.util.Scanner;
 @Data
-public class Lotto{
+public class Lotto implements TheGame{
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
     private final Scanner scanner;
@@ -19,7 +19,7 @@ public class Lotto{
         userNumbers = new UserNumbersSet();
         scanner = new Scanner(System.in);
     }
-    protected void playGame() {
+    public void playGame() {
         ApplicationEngine engine = new ApplicationEngine(generateNumbers, userNumbers, new ResultValidator(), scanner);
         String resultMessage = engine.start();
         System.out.println(resultMessage);
