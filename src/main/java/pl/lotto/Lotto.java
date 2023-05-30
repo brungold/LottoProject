@@ -9,16 +9,19 @@ import pl.lotto.inputSetting.UserNumbers;
 import pl.lotto.inputSetting.UserNumbersSet;
 
 import java.util.Scanner;
+
 @Data
-public class Lotto implements TheGame{
+public class Lotto implements TheGame {
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
     private final Scanner scanner;
+
     public Lotto() {
         generateNumbers = new WiningNumbersGenerator();
         userNumbers = new UserNumbersSet();
         scanner = new Scanner(System.in);
     }
+
     public void playGame() {
         ApplicationEngine engine = new ApplicationEngine(generateNumbers, userNumbers, new ResultValidator(), scanner);
         String resultMessage = engine.start();

@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @Data
-public class ApplicationEngine{
+public class ApplicationEngine {
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
     private final Validator validator;
@@ -34,9 +34,9 @@ public class ApplicationEngine{
     }
 
     private ResultMessage getGameResult() {
-        final Set <Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
-        final Set <Integer> winningNumbers = generateNumbers.generateWiningNumbers();
-        final int result =  validator.validateNumbers(winningNumbers, numbersFromUser);
+        final Set<Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
+        final Set<Integer> winningNumbers = generateNumbers.generateWiningNumbers();
+        final int result = validator.validateNumbers(winningNumbers, numbersFromUser);
         return new ResultMessage(result, numbersFromUser, winningNumbers);
     }
 }
