@@ -5,7 +5,6 @@ import lombok.Data;
 import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.informationForTheUser.Messages;
-import pl.lotto.informationForTheUser.Result;
 import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.*;
 
@@ -18,12 +17,12 @@ public class ApplicationEngine{
     private final GenerateNumbers generateNumbers;
     private final UserNumbers userNumbers;
     private final Validator validator;
-
     private final Scanner scanner;
 
-    public ResultMessage start() {
+    public String start() {
         displayWelcomeMessage();
-        return getGameResult();
+        ResultMessage resultMessage = getGameResult();
+        return resultMessage.getMessage();
     }
 
     private static void displayWelcomeMessage() {
