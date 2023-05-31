@@ -7,6 +7,10 @@ import java.util.Set;
 import pl.lotto.dataSetting.NumbersSetting;
 import pl.lotto.informationForTheUser.Messages;
 
+/**
+ * The UserNumbersSet class collects numbers entered by the user in a simulated game of lotto.
+ * It provides validation for the input data and checks the correctness of the number range.
+ */
 public class UserNumbersSet implements UserNumbers {
 
     public Set<Integer> collectUserNumbers(Scanner scanner) {

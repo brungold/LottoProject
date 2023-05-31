@@ -11,7 +11,10 @@ import pl.lotto.inputSetting.*;
 import java.util.Scanner;
 import java.util.Set;
 
-
+/**
+ * The ApplicationEngine class serves as the main engine of the lotto game.
+ * It generates winning numbers, collects user numbers, validates the numbers, and returns the game result as a message.
+ */
 @Data
 public class ApplicationEngine {
     private final GenerateNumbers generateNumbers;

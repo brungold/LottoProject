@@ -1,5 +1,8 @@
 package pl.lotto.informationForTheUser;
 
+/**
+ * The Messages class provides static final string variables that store messages used in the lotto game, such as welcome messages, game rules, prompts, and result messages.
+ */
 public class Messages {
     public static final String WELCOME_MESSAGE = "Welcome in our lottery!";
     public static final String GAME_RULES = "You must enter %d digits from %d to %d. Press the ENTER button after each digit.";
