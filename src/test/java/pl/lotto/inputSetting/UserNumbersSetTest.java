@@ -1,11 +1,9 @@
 package pl.lotto.inputSetting;
 
 import org.junit.jupiter.api.Test;
-import pl.lotto.informationForTheUser.Messages;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
