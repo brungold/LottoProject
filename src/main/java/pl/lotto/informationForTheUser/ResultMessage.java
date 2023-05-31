@@ -8,7 +8,7 @@ import java.util.Set;
 import static pl.lotto.informationForTheUser.Messages.*;
 
 @Data
-public class ResultMessage implements Result {
+public class ResultMessage{
     private final int result;
     private final Set<Integer> userNumbersSet;
     private final Set<Integer> winningNumbers;
