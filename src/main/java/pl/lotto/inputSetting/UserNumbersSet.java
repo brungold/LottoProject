@@ -12,7 +12,7 @@ public class UserNumbersSet implements NumberRange, VerifyNumbers, UserNumbers {
     public Set<Integer> collectUserNumbers(Scanner scanner) {
         Set<Integer> userNumbers = new HashSet<>();
         int remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size();
-        System.out.println(String.format(Messages.GAME_RULES, remainingNumbers, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT));
+        System.out.printf((Messages.GAME_RULES) + "%n", remainingNumbers, NumbersSetting.BOTTOM_LIMIT, NumbersSetting.TOP_LIMIT);
 
         while (!getFullSet(userNumbers)) {
             String input = scanner.next();
@@ -21,7 +21,7 @@ public class UserNumbersSet implements NumberRange, VerifyNumbers, UserNumbers {
             } else if (isNumber(input) && isInRange(Integer.parseInt(input))) {
                 int number = Integer.parseInt(input);
                 if (userNumbers.contains(number)) {
-                    System.out.println(String.format(Messages.REPEATED_NUMBER, number));
+                    System.out.printf((Messages.REPEATED_NUMBER) + "%n", number);
                 } else {
                     userNumbers.add(number);
                     remainingNumbers = NumbersSetting.NUMBER_OF_NUMBERS - userNumbers.size();
