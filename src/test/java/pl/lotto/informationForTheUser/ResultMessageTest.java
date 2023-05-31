@@ -1,61 +1,63 @@
 package pl.lotto.informationForTheUser;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultMessageTest {
 
     @Test
-    public void test_winning_message() {
-        // Given
+    public void should_winning_message() {
+        // given
         int result = 6;
-        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
+        Set<Integer> userNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));
+        Set<Integer> winningNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbers, winningNumbers);
 
-        // When
-        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
+        // when
+        String message = resultMessage.getMessage();
 
-        // Then
+        // then
         String expectedMessage = "Congratulations you hit 6 digits! Splendidly! You won the grand prize! \n" +
                 "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 3, 4, 5, 6]";
         assertEquals(expectedMessage, message);
     }
 
     @Test
-    public void test_hit_four_or_five_message() {
-        // Given
+    public void should_return_message_for_hit_four_or_five() {
+        // given
         int result = 4;
-        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 15, 16));
-        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
+        Set<Integer> userNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 10, 23));
+        Set<Integer> winningNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbers, winningNumbers);
 
-        // When
-        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
+        // when
+        String message = resultMessage.getMessage();
 
-        // Then
+        // then
         String expectedMessage = "You hit 4 digits! Congratulations!\n" +
-                "Winning numbers were: [1, 2, 3, 4, 15, 16] and yours were: [1, 2, 3, 4, 5, 6]";
+                "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 3, 4, 10, 23]";
         assertEquals(expectedMessage, message);
     }
 
     @Test
-    public void test_less_hits_than_four_message() {
-        // Given
-        int result = 1;
-        Set<Integer> userNumbersSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        Set<Integer> winningNumbers = new HashSet<>(Arrays.asList(1, 12, 23, 34, 55, 46));
-        ResultMessage resultMessage = new ResultMessage(result, userNumbersSet, winningNumbers);
+    void should_return_message_for_less_than_four_hits() {
+        // given
+        int result = 2;
+        Set<Integer> userNumbers = new HashSet<>(Set.of(1, 2, 10, 23, 14, 92));
+        Set<Integer> winningNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));
+        ResultMessage resultMessage = new ResultMessage(result, userNumbers, winningNumbers);
 
-        // When
-        String message = resultMessage.getMessage(result, userNumbersSet, winningNumbers);
+        // when
+        String message = resultMessage.getMessage();
 
-        // Then
-        String expectedMessage = "You hit 1 , unfortunately not this time...\n" +
-                "Winning numbers were: [1, 12, 23, 34, 55, 46] and yours were: [1, 2, 3, 4, 5, 6]";
+        // then
+        String expectedMessage = "You hit 2 , unfortunately not this time...\n" +
+                "Winning numbers were: [1, 2, 3, 4, 5, 6] and yours were: [1, 2, 10, 23, 14, 92]";
         assertEquals(expectedMessage, message);
     }
 }
