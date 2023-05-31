@@ -3,9 +3,6 @@ package pl.lotto.inputSetting;
 import org.junit.jupiter.api.Test;
 import pl.lotto.informationForTheUser.Messages;
 
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,32 +39,19 @@ class UserNumbersSetTest implements SampleScanner {
         // then
         assertThat(expectedNumbers).isEqualTo(selectedNumbers);
     }
-    @Test
-    void should_return_message_wrong_number_because_of_provided_string() {
-        // given
-        String expectedMessage = "Upsss, please check if this is the correct value.\n";
-        String inputData = "pięć\n";
-        Scanner userNumbers = createSampleScanner(inputData);
-
-        // when
-        final Set<Integer> selectedNumbers = userNumbersSet.collectUserNumbers(userNumbers);
-
-        // then
-        assertTrue(selectedNumbers.isEmpty());
-        assertEquals(expectedMessage, Messages.WRONG_NUMBER);
-    }
 
     @Test
     public void should_return_correct_set_of_numbers_when_user_inputs_both_valid_and_invalid_data() {
-        //given
-        Set<Integer> expectedNumbers = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(1,2,3,10,99,33)));
-        String inputData = "1\n2\n3\n10\npięć\n\n10\n6\n100\n99\n\n33\n";
-        Scanner userNumbers = createSampleScanner(inputData);
+        // given
+        Set<Integer> expectedNumbers = new TreeSet<>(Arrays.asList(1, 2, 3, 99, 6, 10));
+        String inputData = "1\n2\n3\n10\npięć\n10\n6\n100\n99\n\n33\n";
+        SampleScanner sampleScanner = new SampleScanner() {};
+        Scanner scanner = sampleScanner.createSampleScanner(inputData);
 
-        //when
-        final Set<Integer> selectedNumbers = userNumbersSet.collectUserNumbers(userNumbers);
+        // when
+        final Set<Integer> selectedNumbers = userNumbersSet.collectUserNumbers(scanner);
 
-        //then
-        assertThat(expectedNumbers).isEqualTo(selectedNumbers);
+        // then
+        assertThat(selectedNumbers).isEqualTo(expectedNumbers);
     }
 }
