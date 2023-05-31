@@ -2,7 +2,6 @@ package pl.lotto.informationForTheUser;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
