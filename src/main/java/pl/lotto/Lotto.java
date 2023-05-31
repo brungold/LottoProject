@@ -10,6 +10,11 @@ import pl.lotto.inputSetting.UserNumbersSet;
 
 import java.util.Scanner;
 
+/**
+ * The Lotto class represents the lotto game and implements TheGame interface.
+ * It utilizes the ApplicationEngine to start and run the game, using instances of GenerateNumbers, UserNumbers,
+ * ResultValidator, and Scanner for gameplay functionality.
+ */
 @Data
 public class Lotto implements TheGame {
     private final GenerateNumbers generateNumbers;
