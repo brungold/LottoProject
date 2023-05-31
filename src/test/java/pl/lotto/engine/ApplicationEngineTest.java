@@ -7,7 +7,6 @@ import pl.lotto.generateNumbers.GenerateNumbers;
 import pl.lotto.generateNumbers.ResultValidator;
 import pl.lotto.generateNumbers.Validator;
 import pl.lotto.generateNumbers.WiningNumbersGenerator;
-import pl.lotto.informationForTheUser.ResultMessage;
 import pl.lotto.inputSetting.UserNumbers;
 import pl.lotto.inputSetting.UserNumbersSet;
 
@@ -23,7 +22,6 @@ class ApplicationEngineTest {
     private static final Validator validatorMock = mock(ResultValidator.class);
     private static final UserNumbers userNumbersMock = mock(UserNumbersSet.class);
     private static final GenerateNumbers generateNumbersMock = mock(WiningNumbersGenerator.class);
-    private static final ResultMessage resultMessage = mock(ResultMessage.class);
 
     @ParameterizedTest(name = "player hit {0} digits, random numbers were {1}, player numbers were {2}, result {3}")
     @MethodSource("provideNumbersAndMessages")
