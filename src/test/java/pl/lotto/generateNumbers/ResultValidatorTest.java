@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ResultValidatorTest {
     @Test
-    public void test_validate_numbers_player_hit_four_numbers() {
+    public void should_validate_numbers_player_hit_four_numbers() {
         //given
         Set<Integer> playerNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         Set<Integer> winingNumbers = new HashSet<>(Arrays.asList(1, 3, 5, 6, 9, 10));
@@ -25,7 +25,7 @@ class ResultValidatorTest {
     }
 
     @Test
-    public void test_validate_numbers_player_hit_zero() {
+    public void should_validate_numbers_player_hit_zero() {
         //given
         Set<Integer> playerNumbers = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         Set<Integer> winingNumbers = new HashSet<>(Arrays.asList(11, 13, 25, 36, 49, 71));
@@ -40,7 +40,7 @@ class ResultValidatorTest {
     }
 
     @Test
-    public void test_validate_numbers_player_hit_six_numbers() {
+    public void should_validate_numbers_player_hit_six_numbers() {
         //given
         Set<Integer> playerNumbers = new HashSet<>(Arrays.asList(11, 13, 25, 36, 49, 71));
         Set<Integer> winingNumbers = new HashSet<>(Arrays.asList(11, 13, 25, 36, 49, 71));

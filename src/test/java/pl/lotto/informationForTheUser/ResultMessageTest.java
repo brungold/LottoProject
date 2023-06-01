@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ResultMessageTest {
 
     @Test
-    public void should_winning_message() {
+    public void should_return_winning_message() {
         // given
         int result = 6;
         Set<Integer> userNumbers = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));

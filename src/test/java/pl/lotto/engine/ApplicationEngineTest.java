@@ -25,7 +25,7 @@ class ApplicationEngineTest {
 
     @ParameterizedTest(name = "player hit {0} digits, random numbers were {1}, player numbers were {2}, result {3}")
     @MethodSource("provideNumbersAndMessages")
-    void shouldReturnCorrectMessageWhenParametersWereGiven(Integer hitsCount,
+    void should_return_correct_message_when_parameters_were_given(Integer hitsCount,
                                                            Set<Integer> playerGivenNumbers,
                                                            Set<Integer> randomNumbers,
                                                            String expectedMessage) {
