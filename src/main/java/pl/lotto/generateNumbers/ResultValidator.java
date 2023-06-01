@@ -14,7 +14,6 @@ public class ResultValidator implements Validator {
     public int validateNumbers(Set<Integer> userNumbers, Set<Integer> winningNumbers) {
         Set<Integer> commonElements = new HashSet<>(userNumbers);
         commonElements.retainAll(winningNumbers);
-        int result = commonElements.size();
-        return result;
+        return commonElements.size();
     }
 }
