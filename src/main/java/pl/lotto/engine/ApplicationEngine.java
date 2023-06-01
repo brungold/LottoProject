@@ -2,8 +2,8 @@ package pl.lotto.engine;
 
 
 import lombok.Data;
-import pl.lotto.generatenumbers.GenerateNumbers;
-import pl.lotto.generatenumbers.Validator;
+import pl.lotto.generatenumbers.NumbersGenerable;
+import pl.lotto.generatenumbers.NumbersValidable;
 import pl.lotto.informationfortheuser.Messages;
 import pl.lotto.informationfortheuser.ResultMessage;
 import pl.lotto.inputsetting.*;
@@ -17,9 +17,9 @@ import java.util.Set;
  */
 @Data
 public class ApplicationEngine {
-    private final GenerateNumbers generateNumbers;
+    private final NumbersGenerable numbersGenerable;
     private final UserNumbers userNumbers;
-    private final Validator validator;
+    private final NumbersValidable numbersValidable;
     private final Scanner scanner;
 
     public String start() {
@@ -38,8 +38,8 @@ public class ApplicationEngine {
 
     private ResultMessage getGameResult() {
         final Set<Integer> numbersFromUser = userNumbers.collectUserNumbers(scanner);
-        final Set<Integer> winningNumbers = generateNumbers.generateWiningNumbers();
-        final int result = validator.validateNumbers(winningNumbers, numbersFromUser);
+        final Set<Integer> winningNumbers = numbersGenerable.generateWiningNumbers();
+        final int result = numbersValidable.validateNumbers(winningNumbers, numbersFromUser);
         return new ResultMessage(result, numbersFromUser, winningNumbers);
     }
 }

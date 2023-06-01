@@ -10,7 +10,7 @@ import pl.lotto.dataSetting.NumbersSetting;
  * The WiningNumbersGenerator class implements the GenerateNumbers interface and provides a method to generate winning numbers for the lotto game.
  * It uses a SecureRandom instance to generate a set of random integers within the specified number range and returns the set of winning numbers.
  */
-public class WiningNumbersGenerator implements GenerateNumbers {
+public class WiningNumbersGenerableGenerator implements NumbersGenerable {
 
     @Override
     public Set<Integer> generateWiningNumbers() {

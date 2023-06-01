@@ -12,7 +12,7 @@ class WiningNumbersGeneratorTest {
     @Test
     public void should_generate_wining_numbers_uniqueness() {
         //given
-        WiningNumbersGenerator winingNumbersGenerator = new WiningNumbersGenerator();
+        WiningNumbersGenerableGenerator winingNumbersGenerator = new WiningNumbersGenerableGenerator();
 
         //when
         Set<Integer> winingNumbersSet = winingNumbersGenerator.generateWiningNumbers();
@@ -26,7 +26,7 @@ class WiningNumbersGeneratorTest {
     @Test
     public void should_generate_wining_numbers_range() {
         // given
-        GenerateNumbers winingNumbersGenerator = new WiningNumbersGenerator();
+        NumbersGenerable winingNumbersGenerator = new WiningNumbersGenerableGenerator();
         int expectedSize = NumbersSetting.NUMBER_OF_NUMBERS;
         int minNumber = NumbersSetting.BOTTOM_LIMIT;
         int maxNumber = NumbersSetting.TOP_LIMIT;
@@ -46,7 +46,7 @@ class WiningNumbersGeneratorTest {
     @Test
     public void should_generate_wining_numbers_returns_numbers_in_random_order() {
         // given
-        GenerateNumbers winingNumbersGenerator = new WiningNumbersGenerator();
+        NumbersGenerable winingNumbersGenerator = new WiningNumbersGenerableGenerator();
 
         // when
         Set<Integer> winingNumbers1 = winingNumbersGenerator.generateWiningNumbers();

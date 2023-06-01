@@ -9,7 +9,7 @@ import java.util.Set;
  * against winning numbers in the lotto game.It determines the number of common elements between
  * the user numbers and winning numbers, and returns the result as an integer.
  */
-public class ResultValidator implements Validator {
+public class ResultNumbersValidable implements NumbersValidable {
     @Override
     public int validateNumbers(Set<Integer> userNumbers, Set<Integer> winningNumbers) {
         Set<Integer> commonElements = new HashSet<>(userNumbers);

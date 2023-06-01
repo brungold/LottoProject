@@ -2,9 +2,9 @@ package pl.lotto;
 
 import lombok.Data;
 import pl.lotto.engine.ApplicationEngine;
-import pl.lotto.generatenumbers.GenerateNumbers;
-import pl.lotto.generatenumbers.ResultValidator;
-import pl.lotto.generatenumbers.WiningNumbersGenerator;
+import pl.lotto.generatenumbers.NumbersGenerable;
+import pl.lotto.generatenumbers.ResultNumbersValidable;
+import pl.lotto.generatenumbers.WiningNumbersGenerableGenerator;
 import pl.lotto.inputsetting.UserNumbers;
 import pl.lotto.inputsetting.UserNumbersSet;
 
@@ -16,19 +16,19 @@ import java.util.Scanner;
  * ResultValidator, and Scanner for gameplay functionality.
  */
 @Data
-public class Lotto implements TheGame {
-    private final GenerateNumbers generateNumbers;
+public class Lotto implements Playable {
+    private final NumbersGenerable numbersGenerable;
     private final UserNumbers userNumbers;
     private final Scanner scanner;
 
     public Lotto() {
-        generateNumbers = new WiningNumbersGenerator();
+        numbersGenerable = new WiningNumbersGenerableGenerator();
         userNumbers = new UserNumbersSet();
         scanner = new Scanner(System.in);
     }
 
     public void playGame() {
-        ApplicationEngine engine = new ApplicationEngine(generateNumbers, userNumbers, new ResultValidator(), scanner);
+        ApplicationEngine engine = new ApplicationEngine(numbersGenerable, userNumbers, new ResultNumbersValidable(), scanner);
         String resultMessage = engine.start();
         System.out.println(resultMessage);
     }

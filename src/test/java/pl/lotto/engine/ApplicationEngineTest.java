@@ -3,10 +3,10 @@ package pl.lotto.engine;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import pl.lotto.generatenumbers.GenerateNumbers;
-import pl.lotto.generatenumbers.ResultValidator;
-import pl.lotto.generatenumbers.Validator;
-import pl.lotto.generatenumbers.WiningNumbersGenerator;
+import pl.lotto.generatenumbers.NumbersGenerable;
+import pl.lotto.generatenumbers.ResultNumbersValidable;
+import pl.lotto.generatenumbers.NumbersValidable;
+import pl.lotto.generatenumbers.WiningNumbersGenerableGenerator;
 import pl.lotto.inputsetting.UserNumbers;
 import pl.lotto.inputsetting.UserNumbersSet;
 
@@ -19,9 +19,9 @@ import static org.mockito.Mockito.when;
 
 class ApplicationEngineTest {
     private static final Scanner scannerMock = new Scanner(System.in);
-    private static final Validator validatorMock = mock(ResultValidator.class);
+    private static final NumbersValidable NUMBERS_VALIDABLE_MOCK = mock(ResultNumbersValidable.class);
     private static final UserNumbers userNumbersMock = mock(UserNumbersSet.class);
-    private static final GenerateNumbers generateNumbersMock = mock(WiningNumbersGenerator.class);
+    private static final NumbersGenerable NUMBERS_GENERABLE_MOCK = mock(WiningNumbersGenerableGenerator.class);
 
     @ParameterizedTest(name = "player hit {0} digits, random numbers were {1}, player numbers were {2}, result {3}")
     @MethodSource("provideNumbersAndMessages")
@@ -32,7 +32,7 @@ class ApplicationEngineTest {
         // given
         mockNumbers(playerGivenNumbers, randomNumbers);
         mockHitCount(randomNumbers, playerGivenNumbers, hitsCount);
-        ApplicationEngine engine = new ApplicationEngine(generateNumbersMock, userNumbersMock, validatorMock, scannerMock);
+        ApplicationEngine engine = new ApplicationEngine(NUMBERS_GENERABLE_MOCK, userNumbersMock, NUMBERS_VALIDABLE_MOCK, scannerMock);
         // when
         String result = engine.start();
         // then
@@ -60,10 +60,10 @@ class ApplicationEngineTest {
 
     private void mockNumbers(Set<Integer> playerGivenNumbers, Set<Integer> randomNumbers) {
         when(userNumbersMock.collectUserNumbers(scannerMock)).thenReturn(playerGivenNumbers);
-        when(generateNumbersMock.generateWiningNumbers()).thenReturn(randomNumbers);
+        when(NUMBERS_GENERABLE_MOCK.generateWiningNumbers()).thenReturn(randomNumbers);
     }
 
     private void mockHitCount(Set<Integer> randomNumbers, Set<Integer> playerGivenNumbers, int hitsCount) {
-        when(validatorMock.validateNumbers(randomNumbers, playerGivenNumbers)).thenReturn(hitsCount);
+        when(NUMBERS_VALIDABLE_MOCK.validateNumbers(randomNumbers, playerGivenNumbers)).thenReturn(hitsCount);
     }
 }
