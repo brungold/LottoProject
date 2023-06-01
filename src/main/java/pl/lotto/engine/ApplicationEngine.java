@@ -2,11 +2,11 @@ package pl.lotto.engine;
 
 
 import lombok.Data;
-import pl.lotto.generateNumbers.GenerateNumbers;
-import pl.lotto.generateNumbers.Validator;
-import pl.lotto.informationForTheUser.Messages;
-import pl.lotto.informationForTheUser.ResultMessage;
-import pl.lotto.inputSetting.*;
+import pl.lotto.generatenumbers.GenerateNumbers;
+import pl.lotto.generatenumbers.Validator;
+import pl.lotto.informationfortheuser.Messages;
+import pl.lotto.informationfortheuser.ResultMessage;
+import pl.lotto.inputsetting.*;
 
 import java.util.Scanner;
 import java.util.Set;

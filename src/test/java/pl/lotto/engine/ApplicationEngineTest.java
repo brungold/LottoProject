@@ -3,12 +3,12 @@ package pl.lotto.engine;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import pl.lotto.generateNumbers.GenerateNumbers;
-import pl.lotto.generateNumbers.ResultValidator;
-import pl.lotto.generateNumbers.Validator;
-import pl.lotto.generateNumbers.WiningNumbersGenerator;
-import pl.lotto.inputSetting.UserNumbers;
-import pl.lotto.inputSetting.UserNumbersSet;
+import pl.lotto.generatenumbers.GenerateNumbers;
+import pl.lotto.generatenumbers.ResultValidator;
+import pl.lotto.generatenumbers.Validator;
+import pl.lotto.generatenumbers.WiningNumbersGenerator;
+import pl.lotto.inputsetting.UserNumbers;
+import pl.lotto.inputsetting.UserNumbersSet;
 
 import java.util.*;
 import java.util.stream.Stream;

@@ -1,4 +1,4 @@
-package pl.lotto.informationForTheUser;
+package pl.lotto.informationfortheuser;
 
 
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.Set;
  * for generating the appropriate message based on the result and converting sets of numbers to formatted strings.
  */
 
-import static pl.lotto.informationForTheUser.Messages.*;
+import static pl.lotto.informationfortheuser.Messages.*;
 
 @Data
 public class ResultMessage {

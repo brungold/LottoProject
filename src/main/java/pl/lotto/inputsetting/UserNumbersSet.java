@@ -1,11 +1,11 @@
-package pl.lotto.inputSetting;
+package pl.lotto.inputsetting;
 
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
 import pl.lotto.dataSetting.NumbersSetting;
-import pl.lotto.informationForTheUser.Messages;
+import pl.lotto.informationfortheuser.Messages;
 
 /**
  * The UserNumbersSet class collects numbers entered by the user in a simulated game of lotto.

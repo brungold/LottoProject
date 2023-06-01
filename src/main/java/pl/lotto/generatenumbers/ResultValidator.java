@@ -1,4 +1,4 @@
-package pl.lotto.generateNumbers;
+package pl.lotto.generatenumbers;
 
 
 import java.util.HashSet;

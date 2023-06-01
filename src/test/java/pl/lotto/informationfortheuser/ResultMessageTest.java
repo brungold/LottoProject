@@ -1,4 +1,4 @@
-package pl.lotto.informationForTheUser;
+package pl.lotto.informationfortheuser;
 
 import org.junit.jupiter.api.Test;
 

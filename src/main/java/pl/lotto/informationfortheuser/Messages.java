@@ -1,4 +1,4 @@
-package pl.lotto.informationForTheUser;
+package pl.lotto.informationfortheuser;
 
 /**
  * The Messages class provides static final string variables that store messages used in the lotto game, such as welcome messages, game rules, prompts, and result messages.
