@@ -5,9 +5,8 @@ import lombok.Data;
 
 import java.util.Set;
 /**
-
- The ResultMessage class represents a message containing the result of a lotto game and provides methods
- for generating the appropriate message based on the result and converting sets of numbers to formatted strings.
+ * The ResultMessage class represents a message containing the result of a lotto game and provides methods
+ * for generating the appropriate message based on the result and converting sets of numbers to formatted strings.
  */
 
 import static pl.lotto.informationForTheUser.Messages.*;
